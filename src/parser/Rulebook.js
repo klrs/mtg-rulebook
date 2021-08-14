@@ -29,7 +29,7 @@ class Rulebook {
 
         for(let chapterKey of this.chapters.keys()) {
             for(let [ruleKey, ruleValue] of this.chapters.get(chapterKey).rules.entries()) {
-                if(ruleValue.includes(search)) tuples.push(new Tuple(chapterKey, ruleKey))
+                if(ruleValue.toLowerCase().includes(search)) tuples.push(new Tuple(chapterKey, ruleKey))
             }
         }
 
@@ -41,7 +41,7 @@ class Rulebook {
         let newTuples = []
 
         for(let tuple of tuples) {
-            if(this.chapters.get(tuple.chapterKey).rules.get(tuple.ruleKey).includes(search)) newTuples.push(tuple)
+            if(this.chapters.get(tuple.chapterKey).rules.get(tuple.ruleKey).toLowerCase().includes(search)) newTuples.push(tuple)
         }
 
         return newTuples

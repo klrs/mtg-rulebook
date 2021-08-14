@@ -6,7 +6,7 @@ function SearchBar(props) {
             <input
                 type="text"
                 placeholder="Search for rules"
-                onChange={(e) => props.onSearchChange(e.target.value)}
+                onChange={(e) => props.onSearchChange(e.target.value.toLowerCase())}
             />
         </div>
     )
