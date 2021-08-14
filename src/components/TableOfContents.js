@@ -2,14 +2,6 @@ import React from 'react';
 
 function TableOfContents(props) {
 
-    const hasSearchedRules = (chapter, search) => {
-        for(let rule of chapter.rules.values()) {
-            if(rule.includes(search)) return true
-        }
-
-        return false
-    }
-
     const chapters = Array.from(props.rulebook.chapters.keys()).map((key) => {
         const tempStyle = {
             color: 'black'
@@ -22,10 +14,11 @@ function TableOfContents(props) {
 
 
         let chapter = props.rulebook.chapters.get(key)
-        let isSearched = (hasSearchedRules(chapter, props.search) && props.search) ? tempStyle2 : tempStyle
+        let style = tempStyle
+        if(props.searchedTuples.find(t => t.chapterKey === key)) style = tempStyle2
 
         return (
-            <div style={isSearched} onClick={(e) => props.onChapterClicked(key, e)}>
+            <div style={style} onClick={(e) => props.onChapterClicked(key, e)}>
                 <span>{key}</span>
                 <span>{chapter.name}</span>
             </div>

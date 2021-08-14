@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import parse from './Parser.js';
+import parse from './parser/Parser.js';
 import React from 'react';
-import Parser from './Parser.js';
-import RulebookView from './RulebookView.js';
-import PasteView from './PasteView.js';
+import Parser from './parser/Parser.js';
+import RulebookView from './components/RulebookUI.js';
+import PasteView from './components/Paster.js';
 
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
 
     this.handleRawData = this.handleRawData.bind(this)
     this.state = {
-      view: 'pasteView',
+      view: 'paster',
       rulebook: null
     }
   }
@@ -25,24 +25,16 @@ class App extends React.Component {
 
     this.setState({
       rulebook: this.parser.parse(rawData),
-      view: 'rulebookView'
+      view: 'rulebook'
     });
 
   }
 
   render() {
-    let view
-    switch (this.state.view) {
-      case 'pasteView':
-        view = (<PasteView handleRawData={this.handleRawData}/>)
-        break;
-      case 'rulebookView':
-        view = (<RulebookView rulebook={this.state.rulebook}/>) 
-        break;
-      default:
-        break;
-    }
 
+    let view
+    if(this.state.view === 'rulebook') view = <RulebookView rulebook={this.state.rulebook}/>
+    else view = <PasteView handleRawData={this.handleRawData}/>
 
     return (
       <div className="App">
