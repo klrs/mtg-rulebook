@@ -1,38 +1,80 @@
+body {
+  background-color: rgb(245, 231, 205);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Main {
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Header {
+  height: 10vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.Rulebook {
+  height: 90vh;
+  overflow: auto;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.TableOfContents {
+  overflow: auto;
+  width: 30%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.SelectedChapter {
+  width: 70%;
+  overflow: auto;
+}
+
+.Part {
+  font-weight: bold;
+  padding-top: 0.5em;
+}
+
+.Chapter:hover {
+  background-color: rgb(243, 219, 174);
+}
+
+.ChapterTitle {
+  margin-top: 0.5em;
+}
+
+.Rule {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  text-align: left;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+}
+
+.Searched {
+  color: rgb(172, 0, 0);
+}
+
+@media screen and (orientation: portrait) {
+  .Rulebook {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .TableOfContents {
+    width: auto;
+    height: 30%;
+  }
+
+  .SelectedChapter {
+    width: auto;
+    height: 70%;
   }
 }

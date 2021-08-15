@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchBar(props) {
     return (
-        <div>
+        <div className='SearchBar'>
             <input
                 type="text"
                 placeholder="Search for rules"

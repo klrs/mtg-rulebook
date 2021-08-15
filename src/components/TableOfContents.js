@@ -3,22 +3,15 @@ import React from 'react';
 function TableOfContents(props) {
 
     const chapters = Array.from(props.rulebook.chapters.keys()).map((key) => {
-        const tempStyle = {
-            color: 'black'
-        }
 
-        const tempStyle2 = {
-            color: 'red'
-        }
-
-
-
+        let isSearched = false
         let chapter = props.rulebook.chapters.get(key)
-        let style = tempStyle
-        if(props.searchedTuples.find(t => t.chapterKey === key)) style = tempStyle2
+        let hasNoRules = false
+        if(props.searchedTuples.find(t => t.chapterKey === key)) isSearched = true
+        if(chapter.rules.size === 0) hasNoRules = true
 
         return (
-            <div style={style} onClick={(e) => props.onChapterClicked(key, e)}>
+            <div className={`${hasNoRules ? 'Part' : 'Chapter'} ${isSearched ? 'Searched' : ''}`} onClick={(e) => props.onChapterClicked(key, e)}>
                 <span>{key}</span>
                 <span>{chapter.name}</span>
             </div>

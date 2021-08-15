@@ -1,11 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import parse from './parser/Parser.js';
 import React from 'react';
 import Parser from './parser/Parser.js';
 import RulebookView from './components/RulebookUI.js';
 import PasteView from './components/Paster.js';
-import Fetcher from './components/Fetcher.js';
 import Loading from './components/Loading.js';
 
 

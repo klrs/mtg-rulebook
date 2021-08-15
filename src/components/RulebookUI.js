@@ -39,10 +39,15 @@ class RulebookView extends React.Component {
 
   render() {
     return (
-      <div id="Rulebook">
-        <SearchBar onSearchChange={this.onSearchChange}/>
-        <TableOfContents rulebook={this.props.rulebook} onChapterClicked={this.onChapterClicked} searchedTuples={this.state.searchedTuples}/>
-        <SelectedChapter rulebook={this.props.rulebook} chapterKey={this.state.selectedChapterKey} searchedTuples={this.state.searchedTuples}/>
+      <div className='Main'>
+        <div className='Header'>
+          <h1>MtG Rulebook</h1>
+          <SearchBar onSearchChange={this.onSearchChange}/>
+        </div>
+        <div className='Rulebook'>
+          <TableOfContents rulebook={this.props.rulebook} onChapterClicked={this.onChapterClicked} searchedTuples={this.state.searchedTuples}/>
+          <SelectedChapter rulebook={this.props.rulebook} chapterKey={this.state.selectedChapterKey} searchedTuples={this.state.searchedTuples}/>
+        </div>
       </div>
     )
   }
