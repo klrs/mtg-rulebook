@@ -1,5 +1,13 @@
 import Rulebook from './Rulebook.js';
 
+
+class Token {
+    constructor(id, text) {
+        this.id = id
+        this.text = text
+    }
+}
+
 class Parser {
 
     parse(rawData) {
@@ -8,6 +16,7 @@ class Parser {
         let lines = this.trimToLines(rawData)
 
         for(const line of lines) {
+            console.log(line)
             let token = this.tokenize(line)
             let chapterId = this.extractChapterId(token.id)
 
@@ -17,29 +26,31 @@ class Parser {
                 else rulebook.addRule(ruleId, token.text, chapterId)
             }
         }
-
+        
         return rulebook
     }
 
+    trim(rawData, firstLineString, terminatorString) {
+
+        let index = rawData.indexOf(firstLineString)
+        let endOfRulesIndex = rawData.indexOf(terminatorString, index)
+        let trimmedData = rawData.slice(index, endOfRulesIndex)
+
+        return trimmedData
+    }
+
     trimToLines(rawData) {
-        let index = rawData.indexOf('1. Game Concepts  ')
-        rawData = rawData.slice(index, rawData.length)
+        const trimmedData = this.trim(rawData, '1. Game Concepts\r\n\r\n', 'Glossary')
+        const seperator = /\r?\n/
 
-        let endOfRulesIndex = rawData.indexOf('Glossary')
-        rawData = rawData.slice(0, endOfRulesIndex)
-    
-        let lines = rawData.split('  ')
-
-        return lines.filter(line => line)
+        let lines = trimmedData.split(seperator)
+        return lines
     }
 
     tokenize(line) {
         line = line.trimStart()
-        let token = {id: null, text: null}
-
-        let seperator = line.indexOf(' ')
-        token.id = line.substring(0, seperator)
-        token.text = line.substring(seperator)
+        const seperator = line.indexOf(' ')
+        let token = new Token(line.substring(0, seperator), line.substring(seperator))
 
         return token
     }

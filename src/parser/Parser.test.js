@@ -4,7 +4,7 @@ import Parser from './Parser.js'
 let parser = new Parser()
 
 test('returns array file of the numbered rules and chapters of the rule data text file', () => {
-    let data = 'This is mock rule data  1. Game Concepts  100. First  100.1. Test  100.1a Test2  Glossary'
+    let data = 'This is mock rule data\r\n\r\n1. Game Concepts\r\n\r\n100. First\r\n\r\n100.1. Test\r\n\r\n100.1a Test2\r\n\r\nGlossary'
 
     expect(parser.trimToLines(data).toString()).toBe(['1. Game Concepts', '100. First', '100.1. Test', '100.1a Test2'].toString())
 });

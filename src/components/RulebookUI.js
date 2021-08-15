@@ -28,10 +28,10 @@ class RulebookView extends React.Component {
 
     if(!search) searchedTuples = []
     else if(this.state.searchString && search.includes(this.state.searchString)) {
-      searchedTuples = this.props.rulebook.containsSpecific(search, this.state.searchedTuples)
+      searchedTuples = this.props.rulebook.includesSpecific(search, this.state.searchedTuples)
     }
     else {
-      searchedTuples = this.props.rulebook.contains(search)
+      searchedTuples = this.props.rulebook.includes(search)
     }
 
     this.setState({searchString: search, searchedTuples: searchedTuples})

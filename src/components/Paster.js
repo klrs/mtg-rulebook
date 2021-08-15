@@ -17,7 +17,9 @@ class PasteView extends React.Component {
                     <label>
                         <input
                         type="text" name="name" value={this.state.rawRuleData}
-                        onChange={(event) => this.props.handleRawData(event.target.value)}
+                        onChange={(event) => {
+                            console.log(event.target.value); this.props.handleRawData(event.target.value)}
+                        }
                         />
                     </label>
                 </form>

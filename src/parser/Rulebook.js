@@ -24,7 +24,11 @@ class Rulebook {
         this.chapters = new Map
     }
 
-    contains(search) {
+    isEmpty() {
+        return !this.chapters || this.chapters.size === 0
+    }
+
+    includes(search) {
         let tuples = []
 
         for(let chapterKey of this.chapters.keys()) {
@@ -36,7 +40,7 @@ class Rulebook {
         return tuples
     }
 
-    containsSpecific(search, tuples) {
+    includesSpecific(search, tuples) {
 
         let newTuples = []
 
