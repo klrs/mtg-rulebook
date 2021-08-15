@@ -9,16 +9,18 @@ function SelectedChapter(props) {
         if(props.searchedTuples.find(tuple => tuple.ruleKey === key && tuple.chapterKey === props.chapterKey)) isSearched = true
 
         return (
-            <div className={`Rule ${isSearched ? 'Searched' : ''}`}>
+            <div key={key} className={`MenuItem Rule ${isSearched ? 'Searched' : ''}`}>
                 <span>{key}</span>
                 <span>{chapter.rules.get(key)}</span>
             </div>
         )}
     )  
 
+    const title = props.chapterKey + '. ' + chapter.name
+
     return (
-        <div class="SelectedChapter">
-            <h2 className='ChapterTitle'>{props.chapterKey}. {chapter.name}</h2>
+        <div className="SelectedChapter">
+            <h2 className='ChapterTitle'>{title}</h2>
             {rules}
         </div>
     )

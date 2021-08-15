@@ -4,14 +4,12 @@ function TableOfContents(props) {
 
     const chapters = Array.from(props.rulebook.chapters.keys()).map((key) => {
 
-        let isSearched = false
-        let chapter = props.rulebook.chapters.get(key)
-        let hasNoRules = false
-        if(props.searchedTuples.find(t => t.chapterKey === key)) isSearched = true
-        if(chapter.rules.size === 0) hasNoRules = true
+        const chapter = props.rulebook.chapters.get(key)
+        let isSearched = (props.searchedTuples.find(t => t.chapterKey === key)) ? true : false
+        let hasNoRules = (chapter.rules.size === 0) ? true : false
 
         return (
-            <div className={`${hasNoRules ? 'Part' : 'Chapter'} ${isSearched ? 'Searched' : ''}`} onClick={(e) => props.onChapterClicked(key, e)}>
+            <div key={key} className={`MenuItem ${hasNoRules ? 'Part' : 'Chapter'} ${isSearched ? 'Searched' : ''}`} onClick={(e) => props.onChapterClicked(key, e)}>
                 <span>{key}</span>
                 <span>{chapter.name}</span>
             </div>
@@ -19,10 +17,8 @@ function TableOfContents(props) {
     })  
     
     return (
-        <div class="TableOfContents">
-            <ul>
-                {chapters}
-            </ul>
+        <div className="TableOfContents">
+            {chapters}
         </div>
     )
 }

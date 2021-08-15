@@ -12,11 +12,10 @@ class Parser {
 
     parse(rawData) {
 
-        let rulebook = new Rulebook
+        let rulebook = new Rulebook()
         let lines = this.trimToLines(rawData)
 
         for(const line of lines) {
-            console.log(line)
             let token = this.tokenize(line)
             let chapterId = this.extractChapterId(token.id)
 

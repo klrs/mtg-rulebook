@@ -1,8 +1,7 @@
 import './App.css';
 import React from 'react';
 import Parser from './parser/Parser.js';
-import RulebookView from './components/RulebookUI.js';
-import PasteView from './components/Paster.js';
+import RulebookUI from './components/RulebookUI.js';
 import Loading from './components/Loading.js';
 
 
@@ -30,7 +29,10 @@ class App extends React.Component {
     const rulesUrl = 'https://media.wizards.com/2021/downloads/MagicCompRules%2020210419.txt'
 
     fetch(corsProxy + rulesUrl)
-    .then(response => response.json())
+    .then(response => {
+      if(!response.ok) alert('There was a problem with fetching the data')
+      return response.json()
+    })
     .then(data => this.handleRawData(data.contents))
   }
 
@@ -50,9 +52,8 @@ class App extends React.Component {
   render() {
 
     let view
-    if(this.state.view === 'rulebook') view = <RulebookView rulebook={this.state.rulebook}/>
+    if(this.state.view === 'rulebook') view = <RulebookUI rulebook={this.state.rulebook}/>
     else view = <Loading message='Fetching data'/>
-    //else view = <PasteView handleRawData={this.handleRawData}/>
 
     return (
       <div className="App">

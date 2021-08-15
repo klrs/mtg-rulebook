@@ -10,7 +10,7 @@ class Tuple {
 class Chapter {
     constructor(name) {
         this.name = name
-        this.rules = new Map
+        this.rules = new Map()
     }
 
     addRule(id, description) {
@@ -21,7 +21,7 @@ class Chapter {
 class Rulebook {
 
     constructor() {
-        this.chapters = new Map
+        this.chapters = new Map()
     }
 
     isEmpty() {

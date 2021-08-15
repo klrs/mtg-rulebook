@@ -22,10 +22,20 @@ body {
 }
 
 .Rulebook {
-  height: 90vh;
+  height: 80vh;
   overflow: auto;
   display: flex;
   justify-content: center;
+}
+
+.Footer {
+  height: 10vh;
+  overflow: auto;
+}
+
+.Footer p {
+  font-size: smaller;
+  margin: 0.5em;
 }
 
 .TableOfContents {
@@ -38,11 +48,6 @@ body {
   overflow: auto;
 }
 
-.Part {
-  font-weight: bold;
-  padding-top: 0.5em;
-}
-
 .Chapter:hover {
   background-color: rgb(243, 219, 174);
 }
@@ -51,12 +56,22 @@ body {
   margin-top: 0.5em;
 }
 
-.Rule {
+.MenuItem {
   display: grid;
   grid-template-columns: 10% 90%;
   text-align: left;
   margin-bottom: 0.5em;
   margin-left: 1em;
+}
+
+.Part {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 0.5em;
+}
+
+.Chapter {
+  text-align: center;
 }
 
 .Searched {

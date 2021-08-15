@@ -3,7 +3,7 @@ import TableOfContents from './TableOfContents.js'
 import SelectedChapter from './SelectedChapter.js'
 import SearchBar from './SearchBar.js'
 
-class RulebookView extends React.Component {
+class RulebookUI extends React.Component {
 
   constructor(props) {
     super(props)
@@ -48,9 +48,12 @@ class RulebookView extends React.Component {
           <TableOfContents rulebook={this.props.rulebook} onChapterClicked={this.onChapterClicked} searchedTuples={this.state.searchedTuples}/>
           <SelectedChapter rulebook={this.props.rulebook} chapterKey={this.state.selectedChapterKey} searchedTuples={this.state.searchedTuples}/>
         </div>
+        <div className='Footer'>
+          <p>“MtG Rulebook is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.”</p>
+        </div>
       </div>
     )
   }
 }
 
-export default RulebookView
+export default RulebookUI
